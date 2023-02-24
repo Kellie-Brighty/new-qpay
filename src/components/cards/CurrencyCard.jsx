@@ -27,8 +27,12 @@ const CurrencyCard = ({ amount, text, symbol, icon, backgroundColor }) => {
             background: backgroundColor === "black" ? "white" : "transparent",
           }}
         >
-          <img src="us_flag.png" alt="" className={`w-[20px]`} />
-          <p className={`font-semibold`} >{symbol === "$" ? "USD" : "NGN"}</p>
+          <img
+            src={symbol === "$" ? "us_flag.png" : "ngn_flag.png"}
+            alt=""
+            className={`w-[20px]`}
+          />
+          <p className={`font-semibold`}>{symbol === "$" ? "USD" : "NGN"}</p>
         </div>
       </div>
     </div>
