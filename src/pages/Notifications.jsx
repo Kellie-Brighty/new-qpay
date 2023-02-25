@@ -7,24 +7,7 @@ const Notifications = () => {
 
   return (
     <Layout>
-      <div className={`h-screen`}>
-        <div
-          className={`h-[69px] w-full shadow-xl bg-white flex items-center px-[32px] sticky top-0`}
-        >
-          <div
-            className={`bg-background rounded-sm w-[408px] h-[41px] flex items-center px-[20px]`}
-          >
-            <input
-              type="text"
-              className={`outline-none w-full h-full bg-background text-[12px] font-normal`}
-              placeholder="search user by name, recipient or transaction status"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <img src="search_icon.png" alt="" className={`w-[16px]`} />
-          </div>
-        </div>
-
+      <div className={`h-full`} >
         <div className={`mt-[40px] px-[32px]`}>
           <p className={`text-[24px] font-semibold`}>Push Notification</p>
 
