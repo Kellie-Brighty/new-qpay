@@ -6,10 +6,11 @@ import Exchangers from "./pages/Exchangers";
 import Transactions from "./pages/Transactions";
 import ManageUsers from "./pages/ManageUsers";
 import Notifications from "./pages/Notifications";
+import SingleUser from "./pages/SingleUser";
 
 const App = () => {
   return (
-    <div className={`font-inter`} >
+    <div className={`font-inter`}>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -17,6 +18,14 @@ const App = () => {
           <Route path="/exchangers" element={<Exchangers />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/manage_users" element={<ManageUsers />} />
+          <Route
+            path="/manage_users/:id/transactions"
+            element={<SingleUser />}
+          />
+          <Route
+            path="/manage_users/:id/personal_information"
+            element={<SingleUser />}
+          />
           <Route path="/notifications" element={<Notifications />} />
         </Routes>
       </Router>

@@ -1,40 +1,60 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Dashboard_Icon from "../assets/dashboard_icon.png";
+import Active_Dashboard_Icon from "../assets/active_dashboard_icon.png";
+import Exchanger_Icon from "../assets/exchangers_icon.png";
+import Active_Exchanger_Icon from "../assets/active_exchangers_icon.png";
+import Transaction_Icon from "../assets/transactions_icon.png";
+import Active_Transaction_Icon from "../assets/active_transactions_icon.png";
+import Manage_Users_Icon from "../assets/manage_users_icon.png";
+import Active_Manage_Users_Icon from "../assets/active_manage_users_icon.png";
+import Push_Notifications_Icon from "../assets/push_notifications_icon.png";
+import Active_Push_Notifications_Icon from "../assets/active_push_notifications_icon.png";
+import Sign_Out_Icon from "../assets/signout_icon.png";
 
-const SideBar = () => {
+const SideBar = ({ logo }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const pathArray = location.pathname.split("/");
+  console.log(pathArray);
+
+  console.log(location.pathname);
 
   const links = [
     {
       title: "Dashboard",
       route: "/dashboard",
-      icon: "dashboard_icon.png",
-      active_icon: "active_dashboard_icon.png",
+      icon: Dashboard_Icon,
+      active_icon: Active_Dashboard_Icon,
+      path: "dashboard",
     },
     {
       title: "Exchangers",
       route: "/exchangers",
-      icon: "exchangers_icon.png",
-      active_icon: "active_exchangers_icon.png",
+      icon: Exchanger_Icon,
+      active_icon: Active_Exchanger_Icon,
+      path: "exchangers",
     },
     {
       title: "Transactions",
       route: "/transactions",
-      icon: "transactions_icon.png",
-      active_icon: "active_transactions_icon.png",
+      icon: Transaction_Icon,
+      active_icon: Active_Transaction_Icon,
+      path: "transactions",
     },
     {
       title: "Manage Users",
       route: "/manage_users",
-      icon: "manage_users_icon.png",
-      active_icon: "active_manage_users_icon.png",
+      icon: Manage_Users_Icon,
+      active_icon: Active_Manage_Users_Icon,
+      path: "manage_users",
     },
     {
       title: "Push note",
       route: "/notifications",
-      icon: "push_notifications_icon.png",
-      active_icon: "active_push_notifications_icon.png",
+      icon: Push_Notifications_Icon,
+      active_icon: Active_Push_Notifications_Icon,
+      path: "notifications",
     },
   ];
 
@@ -42,8 +62,8 @@ const SideBar = () => {
     <div
       className={`h-screen w-[240px] bg-black p-[34px] flex flex-col justify-between`}
     >
-      <div>
-        <img src="qpay_logo_white.png" alt="" className={`w-[123.69px]`} />
+      <div className={`z-10`}>
+        <img src={logo} alt="" className={`w-[123.69px]`} />
       </div>
 
       <div className={`basis-1/5`}>
@@ -54,14 +74,16 @@ const SideBar = () => {
           >
             <img
               src={
-                location.pathname === link.route ? link.active_icon : link.icon
+                location.pathname === link.route || pathArray[1] === link.path
+                  ? link.active_icon
+                  : link.icon
               }
               alt=""
               className={`w-[24px]`}
             />
             <p
               className={`text-[18px] ${
-                location.pathname === link.route
+                location.pathname === link.route || pathArray[1] === link.path
                   ? "font-semibold"
                   : "font-normal"
               } text-white`}
@@ -73,8 +95,11 @@ const SideBar = () => {
       </div>
 
       <div className={`basis-2/12`}>
-        <div className={`flex items-center space-x-4 my-[20px] cursor-pointer`}>
-          <img src="signout_icon.png" alt="" className={`w-[24px]`} />
+        <div
+          className={`flex items-center space-x-4 my-[20px] cursor-pointer`}
+          onClick={() => navigate("/")}
+        >
+          <img src={Sign_Out_Icon} alt="" className={`w-[24px]`} />
           <p className={`text-[18px] font-normal text-white`}>Sign Out</p>
         </div>
       </div>

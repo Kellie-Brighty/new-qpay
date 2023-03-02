@@ -152,12 +152,12 @@ const Transactions = () => {
         </div>
 
         {/* Table Section */}
-        <div className={`px-[32px] mt-[32px] w-[1010px] pb-[50px]`}>
+        <div className={`px-[32px] mt-[32px] pb-[50px]`}>
           <div className="flex flex-col shadow-lg max-w-full">
             <div className="-my-2 overflow-auto sm:-mx-6 lg:-mx-8">
-              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="shadow overflow-x-scroll border-b border-gray-200 scrollbar-hide">
-                  <table className="min-w-full divide-y divide-gray-200 overflow-x-scroll scrollbar-hide">
+              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 max-w-[800px]">
+                <div className="shadow overflow-hidden border-b border-gray-200 overflow-x-scroll scrollbar-hide">
+                  <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-black text-white text-[14px] ">
                       <tr>
                         <th

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../Layout";
 
 const ManageUsers = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate("");
 
   const data = [
     {
@@ -17,7 +19,7 @@ const ManageUsers = () => {
     },
     {
       id: 2,
-      name: "Trust Cephas",
+      name: "Ayomi Alimi",
       email: "kellyowoju@gmail.com",
       phone_number: "09112345678",
       bvn: "17234568",
@@ -27,8 +29,8 @@ const ManageUsers = () => {
     },
     {
       id: 3,
-      name: "Trust Cephas",
-      email: "cephastrust@gmail.com",
+      name: "Kelly Owoju",
+      email: "kellyowoju@gmail.com",
       phone_number: "07012345678",
       bvn: "002345689",
       status: "Active",
@@ -37,7 +39,7 @@ const ManageUsers = () => {
     },
     {
       id: 4,
-      name: "Trust Cephas",
+      name: "John Stone",
       email: "cephastrust@gmail.com",
       phone_number: "07012345678",
       bvn: "002345689",
@@ -47,7 +49,7 @@ const ManageUsers = () => {
     },
     {
       id: 5,
-      name: "Trust Cephas",
+      name: "Ephraim Edwards",
       email: "cephastrust@gmail.com",
       phone_number: "07012345678",
       bvn: "002345689",
@@ -57,7 +59,7 @@ const ManageUsers = () => {
     },
     {
       id: 6,
-      name: "Trust Cephas",
+      name: "Lukman Adams",
       email: "cephastrust@gmail.com",
       phone_number: "07012345678",
       bvn: "002345689",
@@ -69,7 +71,10 @@ const ManageUsers = () => {
 
   const filteredData = data.filter((data) => {
     return (
-      data.phone_number.toString().toLowerCase().includes(searchQuery.toLowerCase()) ||
+      data.phone_number
+        .toString()
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
       data.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       data.bvn.toString().toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -129,8 +134,8 @@ const ManageUsers = () => {
           {/* Table */}
           <div className="flex flex-col shadow-lg">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="shadow overflow-hidden border-b border-gray-200">
+              <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 max-w-[800px]">
+                <div className="shadow overflow-hidden border-b border-gray-200 overflow-x-scroll">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-black text-white text-[14px]">
                       <tr>
@@ -186,7 +191,13 @@ const ManageUsers = () => {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200 font-semibold text-[12px]">
                       {filteredData.map((row, index) => (
-                        <tr key={index}>
+                        <tr
+                          key={index}
+                          className={`cursor-pointer`}
+                          onClick={() =>
+                            navigate(`/manage_users/${row.email}/transactions`)
+                          }
+                        >
                           <td className="px-6 py-4 whitespace-nowrap">
                             {row.id}
                           </td>
