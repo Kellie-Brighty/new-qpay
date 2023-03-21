@@ -11,6 +11,7 @@ import Active_Manage_Users_Icon from "../assets/active_manage_users_icon.png";
 import Push_Notifications_Icon from "../assets/push_notifications_icon.png";
 import Active_Push_Notifications_Icon from "../assets/active_push_notifications_icon.png";
 import Sign_Out_Icon from "../assets/signout_icon.png";
+import Avatar from "../assets/avatar.png"
 
 const SideBar = ({ logo }) => {
   const navigate = useNavigate();
@@ -101,6 +102,13 @@ const SideBar = ({ logo }) => {
         >
           <img src={Sign_Out_Icon} alt="" className={`w-[24px]`} />
           <p className={`text-[18px] font-normal text-white`}>Sign Out</p>
+        </div>
+        <div
+          className={`flex items-center space-x-4 mt-[40px] cursor-pointer`}
+          onClick={() => navigate("/")}
+        >
+          <img src={Avatar} alt="" className={`w-[24px]`} />
+          <p className={`text-[18px] font-normal text-white`}>Admin 1</p>
         </div>
       </div>
     </div>

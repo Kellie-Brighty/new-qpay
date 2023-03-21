@@ -3,17 +3,33 @@ import CurrencyCard from "../components/cards/CurrencyCard";
 import SideBar from "../components/SideBar";
 import Table from "../components/tables/Table";
 import Layout from "../Layout";
+import { TabPanel, useTabs } from "react-headless-tabs";
+import { TabSelector } from "../components/TabSelector";
+import PaypalTable from "../components/tables/PaypalTable";
 
 const Dashboard = () => {
+  const [selectedTab, setSelectedTab] = useTabs(["payoneer", "paypal"]);
+
   return (
     <Layout>
       <div className={`w-full scrollbar-hide h-screen`}>
         <div
           className={`flex items-center justify-between w-full bg-white px-[32px] py-[34px] sticky top-0`}
         >
-          <p className={`text-[24px] font-semibold font-inter`}>
-            Quick Overview
-          </p>
+          <nav className="flex border-b border-[#F0F0F0]">
+            <TabSelector
+              isActive={selectedTab === "payoneer"}
+              onClick={() => setSelectedTab("payoneer")}
+            >
+              Payoneer
+            </TabSelector>
+            <TabSelector
+              isActive={selectedTab === "paypal"}
+              onClick={() => setSelectedTab("paypal")}
+            >
+              PayPal
+            </TabSelector>
+          </nav>
 
           <div
             className={`flex items-center shadow-md p-[11px] space-x-1 cursor-pointer`}
@@ -52,7 +68,14 @@ const Dashboard = () => {
           <p className={`text-[24px] font-semibold my-[45px]`}>
             Transaction History
           </p>
-          <Table />
+          <div className="p-4">
+            <TabPanel hidden={selectedTab !== "payoneer"}>
+              <Table />
+            </TabPanel>
+            <TabPanel hidden={selectedTab !== "paypal"}>
+              <PaypalTable />
+            </TabPanel>
+          </div>
         </div>
       </div>
     </Layout>
